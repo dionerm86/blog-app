@@ -1,8 +1,9 @@
+import { PostResource } from './service/postResource';
 import { PostService } from './service/post.service';
-import { PostResourceService } from './service/post-resource.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostListModule } from './list/post-list.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -10,11 +11,12 @@ import { PostListModule } from './list/post-list.module';
   declarations: [],
   imports: [
     CommonModule,
-    PostListModule
+    PostListModule,
+    HttpClientModule
   ],
   providers:[
-    PostResourceService,
-    PostService
+    PostService,
+    PostResource
   ],
   exports:[
     PostListModule
