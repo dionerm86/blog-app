@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostlistComponent } from './postlist/postlist.component';
-import {MatCardModule, MatButtonModule} from '@angular/material';
+import { PostlistComponent } from './postlist.component';
+import {MatCardModule, MatButtonModule, MatTableModule, MatProgressBarModule} from '@angular/material';
 
 
 
@@ -12,7 +12,9 @@ import {MatCardModule, MatButtonModule} from '@angular/material';
   imports: [
     CommonModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatProgressBarModule
   ],
   exports:[
     PostlistComponent

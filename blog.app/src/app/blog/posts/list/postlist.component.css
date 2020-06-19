@@ -6,3 +6,7 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+:host ::ng-deep .w-100 {
+      width: 100%;
+  }

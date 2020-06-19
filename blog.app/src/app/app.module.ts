@@ -1,5 +1,5 @@
 import { MatIconModule, MatToolbarModule, MatButtonModule } from '@angular/material';
-import { PostListModule } from './blog/list/post-list.module';
+import { PostListModule } from './blog/posts/list/post-list.module';
 import { BlogModule } from './blog/blog.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';

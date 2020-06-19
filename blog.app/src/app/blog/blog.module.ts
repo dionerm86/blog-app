@@ -1,9 +1,7 @@
-import { PostResource } from './service/postResource';
-import { PostService } from './service/post.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostListModule } from './list/post-list.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PostModule } from './posts/postModule';
 
 
 
@@ -11,15 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [],
   imports: [
     CommonModule,
-    PostListModule,
+    PostModule,
     HttpClientModule
   ],
   providers:[
-    PostService,
-    PostResource
   ],
   exports:[
-    PostListModule
+    PostModule
   ]
 })
 export class BlogModule { }

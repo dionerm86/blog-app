@@ -1,7 +1,7 @@
 import { PostListItem } from './dataModel/postListItem';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { ApiConfig } from '../Api.config';
+import { ApiConfig } from '../../Api.config';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
