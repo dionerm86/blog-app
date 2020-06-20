@@ -4,6 +4,9 @@ import { Observable, from } from 'rxjs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { PostEntity } from '../entities/postEntity';
+import { PostDto } from '../Dtos/postDto';
+import { map } from "rxjs/operators";
+import * as _ from 'lodash';;
 
 @Injectable()
 export class PostService {
@@ -13,11 +16,14 @@ export class PostService {
 
     public findAll(): Observable<PostEntity[]> {
 
-        return from(this.postRepository.find())         
+        return from(this.postRepository.find())
+        .pipe(
+            map((posts) => _.orderBy(posts, ['id'], ['desc'])),            
+        );         
     };
 
-    public create(createPostDto: CreatePostDto) {
+    public create(createPostDto: CreatePostDto) : Promise<PostDto> {
         
-        this.postRepository.save(createPostDto)
+        return this.postRepository.save(createPostDto);
     }
 }

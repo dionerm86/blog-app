@@ -1,10 +1,13 @@
-import { MatIconModule, MatToolbarModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { CommonMaterialModule } from './common/material/commonMaterialModules';
 import { PostListModule } from './blog/posts/list/post-list.module';
 import { BlogModule } from './blog/blog.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -12,13 +15,13 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
+    MatToolbarModule,
+    CommonMaterialModule,
     BrowserModule,
     AppRoutingModule,
     BlogModule,
     PostListModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
