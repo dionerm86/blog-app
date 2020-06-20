@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { CreatePostDialogComponent } from '../dialogs/createPostDialog.component';
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
+import { EditPostDto } from '../services/dataModel/EditPostDto';
 
 @Component({
   selector: 'app-post-list',
@@ -32,6 +33,12 @@ export class PostlistComponent implements OnInit {
 
   public getPostList(): Observable<PostDto[]> {
     return this.postListSubject.asObservable();
+  }
+
+  public editPost(editPostDto: EditPostDto) {
+    console.log(editPostDto);
+    this.postService.editPost(editPostDto)
+                    .subscribe((res) => console.log(res));
   }
 
   public createPost() {

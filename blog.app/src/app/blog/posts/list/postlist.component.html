@@ -1,32 +1,8 @@
-<!-- <div class="container-fluid">
-  <div class="row">
-    <div class="col-3" *ngFor="let item of postList | async">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{item.title}}</mat-card-title>
-          <mat-card-subtitle>{{item.subTitle}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="item.imgUrl">
-        <mat-card-content>
-          <p>
-            {{item.content}}
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
-</div> -->
 <div class="continer-fluid">
   <div class="row">
     <div class="col-12">
       <ng-container *ngIf="(getPostList() | async) as postListItem">
-        <mat-table [dataSource]="postListItem" class="w-100 mat-elevation-z8">
+        <mat-table [dataSource]="postListItem" class="w-100 mat-elevation-z8 post-list-table">
           <!-- Position Column -->
           <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
@@ -52,7 +28,7 @@
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="editPost(row)"></mat-row>
         </mat-table>
       </ng-container>
       <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>

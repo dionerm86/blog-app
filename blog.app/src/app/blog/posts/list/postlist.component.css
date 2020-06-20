@@ -7,6 +7,11 @@
   background-size: cover;
 }
 
+.post-list-table mat-row:hover{
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
 :host ::ng-deep .w-100 {
       width: 100%;
   }

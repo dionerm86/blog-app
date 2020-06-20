@@ -1,4 +1,5 @@
 import { CreatePostDto } from './../Dtos/createPostDto';
+import { EditPostDto } from './../Dtos/editPostDto';
 import { Injectable } from '@nestjs/common';
 import { Observable, from } from 'rxjs';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -26,4 +27,17 @@ export class PostService {
         
         return this.postRepository.save(createPostDto);
     }
+
+    public edit(editPostDto: EditPostDto) : Promise<PostEntity> {
+        
+        return this.postRepository.save(editPostDto);
+    }
+
+    public delete(postId: number) {
+        
+        this.postRepository.delete(postId);
+    }
+    
+
+    
 }
