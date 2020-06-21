@@ -5,8 +5,8 @@
         <mat-table [dataSource]="postListItem" class="w-100 mat-elevation-z8 post-list-table">
           <!-- Position Column -->
           <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            <th class="idColumn" *matHeaderCellDef> ID </th>
+            <td class="idColumn" *matCellDef="let element"> {{element.id}} </td>
           </ng-container>
 
           <!-- Name Column -->
@@ -27,6 +27,18 @@
             <mat-cell *matCellDef="let element"> {{element.imgUrl}} </mat-cell>
           </ng-container>
 
+          <div>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td class="trash-icon" *matCellDef="let element">
+              <button mat-icon-button
+                      (click)="deletePost(element); $event.stopPropagation()"
+                      aria-label="Delete Post">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+        </div>
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="editPost(row)"></mat-row>
         </mat-table>

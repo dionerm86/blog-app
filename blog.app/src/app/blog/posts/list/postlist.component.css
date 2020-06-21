@@ -1,17 +1,21 @@
-.example-card {
-  max-width: 400px;
-}
-
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
 .post-list-table mat-row:hover{
   cursor: pointer;
   background-color: #f4f4f4;
 }
 
 :host ::ng-deep .w-100 {
-      width: 100%;
+      width: 90%;
   }
+
+.trash-icon{
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.idColumn {
+  padding-left: 24px;
+  padding-right: 24px;
+  width: 5%;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 12px;
+}

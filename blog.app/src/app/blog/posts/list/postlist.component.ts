@@ -1,13 +1,14 @@
+import { CreatePostDialogComponent } from './../dialogs/createPostDialog.component';
 import { Observable } from 'rxjs';
-import { PostDto } from './../../../../../../blog.api/src/blog/Dtos/postDto';
 import { BehaviorSubject } from 'rxjs';
 import { PostService } from '../services/post.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { CreatePostDialogComponent } from '../dialogs/createPostDialog.component';
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
+import { PostDto } from '../services/dataModel/postDto';
 import { EditPostDto } from '../services/dataModel/EditPostDto';
+import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-post-list',
@@ -18,7 +19,7 @@ export class PostlistComponent implements OnInit {
 
   public isLoading = false;
 
-  public displayedColumns: string[] = ['id', 'title', 'subTitle', 'imgUrl'];
+  public displayedColumns: string[] = ['id', 'title', 'subTitle', 'imgUrl', 'action'];
 
   private postListSubject: BehaviorSubject<PostDto[]> = new BehaviorSubject(null);
 
@@ -35,10 +36,26 @@ export class PostlistComponent implements OnInit {
     return this.postListSubject.asObservable();
   }
 
-  public editPost(editPostDto: EditPostDto) {
-    console.log(editPostDto);
-    this.postService.editPost(editPostDto)
-                    .subscribe((res) => console.log(res));
+  public editPost(editPost: EditPostDto) {
+    const ref = this.matDialog.open(CreatePostDialogComponent, {
+      width: '600px',
+      data: {editPostDto: editPost}
+    })
+
+    ref.afterClosed().subscribe((editedPost: PostDto) => {
+      if (editedPost) {
+        const list = this.postListSubject.getValue();
+        const postIndex = _.findIndex(list, post => post.id === editedPost.id);
+        list[postIndex] = editedPost;
+
+        list.push(editedPost);
+        this.postListSubject.next(_.cloneDeep(list));
+      };
+    });
+  };
+
+  public deletePost(postDto: PostDto) {
+    const ref = this.matDialog.open(ConfirmationDialogComponent);
   }
 
   public createPost() {
