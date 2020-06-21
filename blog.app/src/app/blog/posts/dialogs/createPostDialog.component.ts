@@ -38,8 +38,8 @@ export class CreatePostDialogComponent implements OnInit {
       this.isLoading = true;
       this.handleAfterSubmit(
           this.isEditing ?
-          this.postService.editPost(this.postModel) :
-          this.postService.createPost(this.postModel as CreatePostDto)
+          this.postService.editPost(this.postModel as EditPostDto) :
+          this.postService.createPost(this.postModel)
       );
     }
   }

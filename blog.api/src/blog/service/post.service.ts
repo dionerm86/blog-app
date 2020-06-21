@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 import { PostEntity } from '../entities/postEntity';
 import { PostDto } from '../Dtos/postDto';
 import { map } from "rxjs/operators";
-import * as _ from 'lodash';;
+import * as _ from 'lodash';
 
 @Injectable()
 export class PostService {

@@ -31,7 +31,7 @@ export class PostlistComponent implements OnInit {
     this.isLoading = true;
     this.postService.getAllPostItems()
     .pipe(finalize(() => this.isLoading = false))
-    .subscribe((postListItem : any) => this.postListSubject.next(postListItem));
+    .subscribe((postListItem) => this.postListSubject.next(postListItem));
   }
 
   public getPostList(): Observable<PostDto[]> {
@@ -45,19 +45,21 @@ export class PostlistComponent implements OnInit {
     })
 
     ref.afterClosed().subscribe((editedPost: PostDto) => {
+
       if (editedPost) {
         const list = this.postListSubject.getValue();
         const postIndex = _.findIndex(list, post => post.id === editedPost.id);
         list[postIndex] = editedPost;
 
-        list.push(editedPost);
         this.postListSubject.next(_.cloneDeep(list));
       };
     });
   };
 
   public deletePost(postDto: PostDto) {
+
     const ref = this.matDialog.open(ConfirmationDialogComponent);
+
     ref.afterClosed().subscribe((canContinu) => {
       if (canContinu) {
         this.isLoading = true;

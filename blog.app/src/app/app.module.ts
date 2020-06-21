@@ -1,3 +1,4 @@
+import { LoginModule } from './login/login.module';
 import { MatToolbarModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BlogModule,
     PostListModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
