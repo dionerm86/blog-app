@@ -1,11 +1,13 @@
-<h1>Confirm your action!</h1>
-<div mat-dialog-content>
-  The action is not revertible, are you sure you want to continue ?
-</div>
-<div mat-dialog-actions>
-  <button mat-button
-          type="button"
-          (click)="Submit()"
-          color="primary">Continue
-  </button>
-  <button mat-button mat-dialog-close>Cancel</button>
+<h2 mat-dialog-title>Confirm your action!</h2>
+        <div>
+            <p>Are you sure you want to delete ?</p>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button mat-dialog-close>No</button>
+            <button mat-button
+                    type="button"
+                    (click)="Submit()"
+                    color="warn">
+                Yes
+            </button>
+        </div>

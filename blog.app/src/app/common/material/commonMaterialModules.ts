@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { MatCardModule, MatButtonModule, MatTableModule,
          MatProgressBarModule, MatIconModule, MatTooltipModule,
-         MatDialogModule,
-         MatInputModule,
-         MatFormFieldModule} from '@angular/material';
-
+         MatDialogModule, MatInputModule, MatFormFieldModule,
+         MatSnackBarModule} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -29,7 +27,8 @@ import { MatCardModule, MatButtonModule, MatTableModule,
     MatTooltipModule,
     MatDialogModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule
   ]
 })
 

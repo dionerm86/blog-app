@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { PostService } from '../services/post.service';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { PostDto } from '../services/dataModel/postDto';
@@ -23,13 +23,15 @@ export class PostlistComponent implements OnInit {
 
   private postListSubject: BehaviorSubject<PostDto[]> = new BehaviorSubject(null);
 
-  constructor(private postService: PostService, private matDialog: MatDialog) { }
+  constructor(private postService: PostService,
+              private matDialog: MatDialog,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.isLoading = true;
     this.postService.getAllPostItems()
-        .pipe(finalize(() => this.isLoading = false))
-        .subscribe((postListItem : any) => this.postListSubject.next(postListItem));
+    .pipe(finalize(() => this.isLoading = false))
+    .subscribe((postListItem : any) => this.postListSubject.next(postListItem));
   }
 
   public getPostList(): Observable<PostDto[]> {
@@ -56,6 +58,23 @@ export class PostlistComponent implements OnInit {
 
   public deletePost(postDto: PostDto) {
     const ref = this.matDialog.open(ConfirmationDialogComponent);
+    ref.afterClosed().subscribe((canContinu) => {
+      if (canContinu) {
+        this.isLoading = true;
+        this.postService.deletePost(postDto.id)
+        .pipe(finalize(() => this.isLoading = false))
+        .subscribe( () => {
+          const list = this.postListSubject.getValue();
+          _.remove(list, post => post.id === postDto.id);
+          this.postListSubject.next(_.cloneDeep(list));
+
+          this.snackBar.open(`Post ${postDto.title} has been deleted`, null, {
+            duration: 2000,
+          });
+        }
+        );
+      }
+    } )
   }
 
   public createPost() {

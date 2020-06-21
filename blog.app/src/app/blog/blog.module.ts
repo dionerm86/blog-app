@@ -1,3 +1,4 @@
+import { CommonMaterialModule } from './../common/material/commonMaterialModules';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -6,16 +7,19 @@ import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confi
 
 @NgModule({
   declarations: [
-    ConfirmationDialogComponent],
+    ConfirmationDialogComponent
+  ],
   imports: [
     CommonModule,
     PostModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonMaterialModule
   ],
   providers:[
   ],
   exports:[
-    PostModule
+    PostModule,
+    CommonMaterialModule
   ],
   entryComponents: [
     ConfirmationDialogComponent

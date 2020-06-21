@@ -1,3 +1,16 @@
+<div class="container-fluid mb-2">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-end">
+      <button mat-fab
+              matTooltip="Create new Post"
+              color="primary"
+              (click)="createPost()" >
+        <mat-icon >add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
 <div class="continer-fluid">
   <div class="row">
     <div class="col-12">
@@ -45,19 +58,6 @@
       </ng-container>
       <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
 
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid mt-5">
-  <div class="row">
-    <div class="col-12 d-flex justify-content-end">
-      <button mat-fab
-              matTooltip="Create new Post"
-              color="primary"
-              (click)="createPost()" >
-        <mat-icon >add</mat-icon>
-      </button>
     </div>
   </div>
 </div>
