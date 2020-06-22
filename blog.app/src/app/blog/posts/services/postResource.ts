@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { PostDto } from './dataModel/postDto';
 import { Injectable } from '@angular/core';
-import { ApiConfig } from '../../Api.config';
+import { ApiConfig } from '../../../common/Api.config';
 import { HttpClient } from '@angular/common/http';
 import { CreatePostDto } from './dataModel/createPostDto';
 import { EditPostDto } from './dataModel/EditPostDto';

@@ -2,8 +2,9 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonMaterialModule } from '../common/material/commonMaterialModules';
+import { CommonMaterialModule } from '../common/material/commonMaterial.module';
 import { LoginRouts } from './login.routes';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,6 +13,7 @@ import { LoginRouts } from './login.routes';
     LoginComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     CommonMaterialModule,
     RouterModule.forChild(LoginRouts)

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { CommonMaterialModule } from './../../common/material/commonMaterialModules';
+import { CommonMaterialModule } from '../../common/material/commonMaterial.module';
 import { PostListModule } from './list/post-list.module';
 import { NgModule } from '@angular/core';
 import { PostService } from './services/post.service';

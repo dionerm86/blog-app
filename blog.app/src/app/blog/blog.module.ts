@@ -1,6 +1,6 @@
 import { BlogRounting } from './blog.routing';
 import { RouterModule } from '@angular/router';
-import { CommonMaterialModule } from './../common/material/commonMaterialModules';
+import { CommonMaterialModule } from '../common/material/commonMaterial.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';

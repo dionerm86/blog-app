@@ -1,4 +1,4 @@
-import { CommonMaterialModule } from './../../../common/material/commonMaterialModules';
+import { CommonMaterialModule } from '../../../common/material/commonMaterial.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostlistComponent } from './postlist.component';

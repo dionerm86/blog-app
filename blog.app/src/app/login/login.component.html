@@ -5,11 +5,14 @@
           <mat-card-header>
               <mat-card-title>Login</mat-card-title>
           </mat-card-header>
+          <form #formLogin="ngForm">
           <mat-card-content>
              <div class="row">
                <div class="col-12">
                  <mat-form-field class="w-100">
                    <input type="text"
+                          required
+                          [(ngModel)]="user.nickname"
                           matInput
                           placeholder="user"
                           name="email">
@@ -18,6 +21,8 @@
                <div class="col-12">
                 <mat-form-field class="w-50">
                   <input type="password"
+                         required
+                         [(ngModel)]="user.password"
                          matInput
                          placeholder="password"
                          name="password">
@@ -26,8 +31,10 @@
              </div>
           </mat-card-content>
           <mat-card-actions class="d-flex justify-content-center">
-              <button mat-flat-button color="primary" class="w-50" mat-button (click)="onAction1">Submit</button>
+              <button mat-flat-button color="primary" [disabled]="isLoading" class="w-50" mat-button (click)="onSubmit(formLogin)">Submit</button>
           </mat-card-actions>
+          </form>
+          <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
       </mat-card>
     </div>
   </div>
